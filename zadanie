@@ -1,0 +1,24 @@
+import random
+
+class Warrior:
+    def __init__(self, name, health=100):
+        self.name = name
+        self.health = health
+
+    def attack(self, opponent):
+        print(f'{self.name} атакует {opponent.name}')
+        opponent.health -= 20
+        print(f'У {opponent.name} осталось {opponent.health} очков здоровья')
+
+warrior1 = Warrior('Воин1')
+warrior2 = Warrior('Воин2')
+
+while warrior1.health > 0 and warrior2.health > 0:
+    attacker = random.choice([warrior1, warrior2])
+    opponent = warrior2 if attacker == warrior1 else warrior1
+    attacker.attack(opponent)
+
+if warrior1.health <= 0:
+    print(f'{warrior2.name} одержал победу!')
+else:
+    print(f'{warrior1.name} одержал победу!')
